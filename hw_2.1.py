@@ -10,7 +10,7 @@ with open('dishes_list.txt', 'r', encoding='utf8') as menu:
     cook_book = {}
 
     for line in menu:
-        dish = line.strip()
+        dish = line.lower().strip()
         dishes[dish] = [{}]
         q = int(menu.readline())
         quantity.append(q)
@@ -20,15 +20,10 @@ with open('dishes_list.txt', 'r', encoding='utf8') as menu:
             ingridient = ingridient.strip()
             ingridient = ingridient.split('|')
             ingridients.append(ingridient)
-            dish_list_item = {'ingridient_name': ingridient[0], 'quantity': int(ingridient[1]), 'measure': ingridient[2]}
+            dish_list_item = {'ingridient_name': ingridient[0].lower(), 'quantity': int(ingridient[1]), 'measure': ingridient[2]}
             dish_list.append(dish_list_item)
             cook_book[dish] = dish_list
         menu.readline()
-
-pprint(cook_book)
-
-
-
 
 
 def get_shop_list_by_dishes(dishes, person_count):
@@ -58,5 +53,5 @@ def create_shop_list():
     shop_list = get_shop_list_by_dishes(dishes, person_count)
     print_shop_list(shop_list)
 
-print(cook_book)
+
 create_shop_list()
