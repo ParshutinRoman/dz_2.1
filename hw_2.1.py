@@ -1,29 +1,25 @@
 from pprint import pprint
-path = "/Users/admin/Desktop/netology/PY/dz_2.1"
 
 
 with open('dishes_list.txt', 'r', encoding='utf8') as menu:
 
     dishes = {}
-    quantity = []
     ingridients = []
     cook_book = {}
 
     for line in menu:
         dish = line.lower().strip()
-        dishes[dish] = [{}]
         q = int(menu.readline())
-        quantity.append(q)
         dish_list = []
         for i in range(q):
             ingridient = menu.readline()
             ingridient = ingridient.strip()
             ingridient = ingridient.split('|')
-            ingridients.append(ingridient)
-            dish_list_item = {'ingridient_name': ingridient[0].lower(), 'quantity': int(ingridient[1]), 'measure': ingridient[2]}
+            dish_list_item = {'ingridient_name': ingridient[0].lower().strip(), 'quantity': int(ingridient[1]), 'measure': ingridient[2]}
             dish_list.append(dish_list_item)
-            cook_book[dish] = dish_list
+        cook_book[dish] = dish_list
         menu.readline()
+
 
 
 def get_shop_list_by_dishes(dishes, person_count):
