@@ -1,28 +1,29 @@
 from pprint import pprint
 
 
-with open('dishes_list.txt', 'r', encoding='utf8') as menu:
+def create_cook_book():
+    with open('dishes_list.txt', 'r', encoding='utf8') as menu:
 
-    dishes = {}
-    ingridients = []
-    cook_book = {}
+        cook_book = {}
 
-    for line in menu:
-        dish = line.lower().strip()
-        q = int(menu.readline())
-        dish_list = []
-        for i in range(q):
-            ingridient = menu.readline()
-            ingridient = ingridient.strip()
-            ingridient = ingridient.split('|')
-            dish_list_item = {'ingridient_name': ingridient[0].lower().strip(), 'quantity': int(ingridient[1]), 'measure': ingridient[2]}
-            dish_list.append(dish_list_item)
-        cook_book[dish] = dish_list
-        menu.readline()
+        for line in menu:
+            dish = line.lower().strip()
+            q = int(menu.readline())
+            dish_list = []
+            for i in range(q):
+                ingridient = menu.readline()
+                ingridient = ingridient.strip()
+                ingridient = ingridient.split('|')
+                dish_list_item = {'ingridient_name': ingridient[0].lower().strip(), 'quantity': int(ingridient[1]), 'measure': ingridient[2]}
+                dish_list.append(dish_list_item)
+            cook_book[dish] = dish_list
+            menu.readline()
+    return (cook_book)
 
 
 
 def get_shop_list_by_dishes(dishes, person_count):
+    cook_book = create_cook_book()
     shop_list = {}
     for dish in dishes:
         for ingridient in cook_book[dish]:
