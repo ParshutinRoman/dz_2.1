@@ -18,7 +18,7 @@ def create_cook_book():
                 dish_list.append(dish_list_item)
             cook_book[dish] = dish_list
             menu.readline()
-    return (cook_book)
+    return cook_book
 
 
 
