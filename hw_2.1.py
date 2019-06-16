@@ -22,6 +22,8 @@ def create_cook_book():
 
 
 
+
+
 def get_shop_list_by_dishes(dishes, person_count):
     cook_book = create_cook_book()
     shop_list = {}
